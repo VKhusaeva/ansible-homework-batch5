@@ -1,0 +1,2 @@
+vm1 ansible_host=18.119.161.3
+vm2 ansible_host=18.220.56.127

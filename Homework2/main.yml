@@ -1,0 +1,47 @@
+- hosts: all
+  become: yes
+  name: Manage Users and Groups
+  tasks:
+  - name: Create group devops
+    group:
+      name: devops
+      state: present
+  
+  - name: Create group qa
+    group:
+      name: qa
+      state: present
+
+  - name: Create user "vik"
+    user:
+      name: vik
+      state: present
+  
+  - name: Create user "tim"
+    user:
+      name: tim
+      state: present
+  
+  - name: Create user "ann"
+    user:
+      name: ann
+      state: present
+
+  - name: Add user vik to devops group
+    ansible.builtin.user:
+      name: vik
+      groups: devops
+      append: yes
+
+  - name: Add user tim to qa group
+    ansible.builtin.user:
+      name: tim
+      groups: qa
+      append: yes
+
+  - name: Add user ann to qa group
+    ansible.builtin.user:
+      name: ann
+      groups: qa
+      append: yes    
+      
