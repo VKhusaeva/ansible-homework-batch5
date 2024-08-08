@@ -1,0 +1,23 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: Create group
+    ansible.builtin.group:
+      name: devops
+      state: present
+
+  - name: Create user
+    ansible.builtin.user:
+      name: tim
+      groups: devops
+      state: present
+
+  - name: Copy files to remote machine
+    ansible.builtin.copy:
+      src: /home/ubuntu/ansible-homework-batch5/Homework4/.
+      dest: ./
+      owner: tim
+      group: devops
+      mode: '0755'
+
+
